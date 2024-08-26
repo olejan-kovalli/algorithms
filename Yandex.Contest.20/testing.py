@@ -1,3 +1,5 @@
+import time
+
 class Tester:
     """
     parser func should return (inp, outp)
@@ -16,5 +18,11 @@ class Tester:
             print('pass')
         else:
             print('fail')
+            
         print('\texpected ', expected)
         print('\tactual   ', actual)
+    
+    def test_big_case(self, case):
+        start = time.process_time()
+        self.test(case)
+        print('%0.2f sec' % ( time.process_time() - start))
