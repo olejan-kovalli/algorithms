@@ -9,7 +9,7 @@ class Tester:
         self.parser_func = parser_func
         self.target_func = target_func
 
-    def test(self, case):
+    def test(self, case, verbose=True):
         inp, expected = self.parser_func(case)
 
         actual = self.target_func(*inp)
@@ -18,11 +18,12 @@ class Tester:
             print('pass')
         else:
             print('fail')
-            
-        print('\texpected ', expected)
-        print('\tactual   ', actual)
+
+        if verbose:
+            print('\texpected ', expected)
+            print('\tactual   ', actual)
     
-    def test_big_case(self, case):
-        start = time.process_time()
-        self.test(case)
-        print('%0.2f sec' % ( time.process_time() - start))
+    def test_big_case(self, case, verbose=True):
+        start = time.time()
+        self.test(case, verbose)
+        print('%0.2f sec' % ( time.time() - start))
